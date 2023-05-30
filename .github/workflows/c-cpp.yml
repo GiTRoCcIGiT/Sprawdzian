@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <time.h>
+
+using namespace std;
+
+int main()
+{
+    int i,j;
+    int liczba, l, n, p, s;
+    
+    cout<<"Podaj ilość elementów tablicy: ";
+    cin>>n;
+    
+    int tab[n];
+
+    cout<<"Twoja tablica: ";
+    
+    srand(time(0)); 
+  
+    for (i = 0; i < n; i++) { 
+        tab[i] = (rand() % 100) + 1; 
+    }
+    
+    for(j = 0;j < n - 1;j++){
+        for(i = 0;i < n - 1;i++){
+            if(tab[i] > tab[i+1]){
+              swap(tab[i],tab[i+1]);
+            }
+        }
+    }
+    
+    for(i = 0;i<n;i++){
+        cout<<" "<<tab[i];
+    }
+    
+    cout<<endl<<"Podaj szukaną liczbe: ";
+    cin>>liczba;
+    
+    l=0;
+    p=n-1;
+    while(true){
+        if(l>p){
+            cout<<"Nie odnaleziono szukanego elementu ;(";
+            break;
+        }
+        
+        s = (l + p) / 2;
+        if(tab[s] == liczba){
+            cout<<"Odnaleziono element "<<liczba<<" pod indeksem "<<s+1<<endl;
+            break;
+        }else if (tab[s] < liczba){
+            l = s+1;
+        }else
+            p = s-1;
+    }
+    
+    return 0;
+}
