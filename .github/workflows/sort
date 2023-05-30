@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<string> lista_napisow;
+    string napis;
+
+    // Pobierz listę napisów od użytkownika
+    cout << "Podaj liste napisow (wpisz 'koniec', aby zakonczyc wpisywanie):" << endl;
+    while (cin >> napis && napis != "koniec") {
+        lista_napisow.push_back(napis);
+    }
+
+    // Posortuj listę napisów alfabetycznie
+    sort(lista_napisow.begin(), lista_napisow.end());
+
+    // Wyświetl posortowaną listę napisów
+    cout << "Posortowana lista napisow:" << endl;
+    for (const auto& napis : lista_napisow) {
+        cout << napis << endl;
+    }
+
+    return 0;
+}
